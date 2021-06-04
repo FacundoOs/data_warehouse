@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const firstAdmin = require("./controllers/create_first_admin");
 require("dotenv").config();
 
 //Middlewares
@@ -21,10 +22,12 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
+  firstAdmin();
 });
 
 mongoose.connection.on("error", (err) => {
