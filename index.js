@@ -6,6 +6,9 @@ const cors = require("cors");
 const firstAdmin = require("./controllers/create_first_admin");
 require("dotenv").config();
 
+const routes = require('./routes/router.js'); // import the routes
+
+
 //Middlewares
 app.use(cors());
 
@@ -16,6 +19,8 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+app.use('/', routes);
 
 //Database
 
