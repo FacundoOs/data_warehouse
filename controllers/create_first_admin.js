@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 const firstAdmin = async () => {
-  const adminExist = await User.find({ email: "admin@mail.com" });
+  const adminExist = await User.find({ email: "adminAccount@mail.com" });
 
   if (adminExist == "") {
     const hashPasswrod = await bcrypt.hash(process.env.FIRST_ADMIN, 10);
