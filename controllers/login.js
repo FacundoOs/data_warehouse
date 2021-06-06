@@ -10,7 +10,7 @@ const login = async (req, res, next) => {
   try {
     const match = await bcrypt.compare(password, user.password);
     const accessToken = jwt.sign({ email: email }, process.env.TOKEN_SECRET, { expiresIn: "1d" });
-
+    console.log(accessToken)
     if (match) {
       res.json({
         message: "User authenticated",

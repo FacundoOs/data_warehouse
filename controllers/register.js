@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const register = async (req, res) => {
   const { name, lastName, email, rol, password } = req.body;
 
+
   const user = await User.findOne({ email: email });
 
   if (user == undefined) {
@@ -41,4 +42,4 @@ module.exports = register;
 //   "password": "client123"
 // }
 
-// Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQWNjb3VudEBtYWlsLmNvbSIsImlhdCI6MTYyMjkwNjE5MSwiZXhwIjoxNjIyOTkyNTkxfQ.OvI2dVui8pdszuu4q1VXIvluACT12lst-eVUjDKRbJI
+// Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQWNjb3VudEBtYWlsLmNvbSIsImlhdCI6MTYyMjkzMTQ5NCwiZXhwIjoxNjIzMDE3ODk0fQ.k29f0NLV3ZBn0hI-j5IKfjfneTIz2wjZTN7m0E28a6M
