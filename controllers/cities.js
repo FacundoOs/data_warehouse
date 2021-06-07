@@ -31,6 +31,13 @@ class Cities {
       })
       .catch((err) => res.status(400).json("Error: " + err));
   }
+
+  async deleteCity(req, res) {
+    city
+      .findByIdAndDelete(req.params)
+      .then(() => res.json("City deleted."))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
 }
 
 module.exports = new Cities();

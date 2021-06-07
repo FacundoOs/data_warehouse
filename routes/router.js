@@ -20,8 +20,10 @@ router.post("/regions", regions.newRegion)
 router.delete("/regions/:_id", regions.deleteRegion)
 
 router.post("/countries/:_id", countries.newCountry)
+router.delete("/countries/:_id", countries.deleteCountry)
 
 router.post("/cities/:_id", cities.newCities)
+router.delete("/cities/:_id", cities.deleteCity)
 
 
 
