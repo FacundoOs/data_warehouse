@@ -38,6 +38,21 @@ class Regions {
       .then(() => res.json("Region modified!"))
       .catch((err) => res.status(400).json("Error: " + err));
   }
+
+  async allRegions(req, res) {
+    region
+      .find({}, { __v: 0 })
+      .populate({
+        path: "countries",
+        select: "name",
+        populate: {
+          path: "cities",
+          select: "name",
+        },
+      })
+      .then((regions) => res.json(regions))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
 }
 
 module.exports = new Regions();

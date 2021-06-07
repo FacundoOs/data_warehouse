@@ -55,6 +55,16 @@ class Countries {
       .catch((err) => res.status(400).json("Error: " + err));
   }
 
+  async allCountries(req, res) {
+    country
+      .find({}, { __v: 0 })
+      .populate({
+        path: "cities",
+        select: "name",
+      })
+      .then((countries) => res.json(countries))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
 }
 
 module.exports = new Countries();

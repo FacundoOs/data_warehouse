@@ -46,6 +46,12 @@ class Cities {
       .catch((err) => res.status(400).json("Error: " + err));
   }
 
+  async allCities(req, res) {
+    city
+      .find({}, { __v: 0, _id: 0 })
+      .then((cities) => res.json(cities))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
 }
 
 module.exports = new Cities();
