@@ -9,6 +9,7 @@ const regions = require("../controllers/regions")
 const countries = require("../controllers/countries")
 const cities = require("../controllers/cities")
 const companies = require("../controllers/companies")
+const contacts = require("../controllers/contacts")
 
 router.post("/login", login);
 router.post("/register", auth, register);
@@ -36,6 +37,14 @@ router.post("/companies", companies.newCompany)
 router.delete("/companies/:_id", companies.deleteCompany)
 router.put("/companies/:_id", companies.updateCompany)
 router.get("/companies", companies.allCompanies)
+
+
+router.post("/contacts", contacts.newContact)
+router.delete("/contacts", contacts.deleteContact)
+router.put("/contacts/:_id", contacts.updateContact)
+router.get("/contacts", contacts.allContacts)
+router.get("/contacts/:_id", contacts.contactById)
+router.get("/contacts/sort/:field&:order", contacts.sortContacts)
 
 
 

@@ -18,16 +18,31 @@ const contactSchema = new Schema({
     unique: true,
     required: true,
   },
-  company: {
-    type: Schema.Types.ObjectId,
-    ref: "Company",
-    required: true,
-  },
-  city: {
-    type: Schema.Types.ObjectId,
-    ref: "City",
-  },
-
+  company: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Company",
+      required: true,
+    },
+  ],
+  region: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Region",
+    },
+  ],
+  country: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Country",
+    },
+  ],
+  city: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "City",
+    },
+  ],
   address: {
     type: String,
   },
@@ -36,6 +51,7 @@ const contactSchema = new Schema({
   },
   contactChannel: [
     {
+      type: Array,
       channel: {
         type: String,
         enum: ["Phone", "Whatsapp", "Instagram", "Facebook", "Linkedin"],

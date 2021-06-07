@@ -60,7 +60,7 @@ class Companies {
 
   async allCompanies(req, res) {
     Company
-      .find({}, { __v: 0, _id: 0 })
+      .find({}, { __v: 0})
       .populate({
         path: "city",
         select: "name",
