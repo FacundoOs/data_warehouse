@@ -5,10 +5,10 @@ const companySchema = new Schema({
   address: { type: String },
   email: { type: String, unique: true },
   phone: { type: String, unique: true },
-  city: {
+  city: [{
     type: Schema.Types.ObjectId,
     ref: "City",
-  },
+  }],
 });
 
 module.exports = model("Company", companySchema);

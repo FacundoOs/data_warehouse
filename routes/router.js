@@ -8,6 +8,7 @@ const admin = require("../controllers/adminUsers");
 const regions = require("../controllers/regions")
 const countries = require("../controllers/countries")
 const cities = require("../controllers/cities")
+const companies = require("../controllers/companies")
 
 router.post("/login", login);
 router.post("/register", auth, register);
@@ -30,6 +31,11 @@ router.post("/cities/:_id", cities.newCities)
 router.delete("/cities/:_id", cities.deleteCity)
 router.put("/cities/:_id", cities.updateCity)
 router.get("/cities", cities.allCities)
+
+router.post("/companies", companies.newCompany)
+router.delete("/companies/:_id", companies.deleteCompany)
+router.put("/companies/:_id", companies.updateCompany)
+router.get("/companies", companies.allCompanies)
 
 
 
