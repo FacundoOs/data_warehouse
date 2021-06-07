@@ -47,6 +47,14 @@ class Countries {
       })
       .catch((err) => res.status(400).json("Error: " + err));
   }
+
+  async updateCountry(req, res) {
+    country
+      .updateOne(req.params, req.body)
+      .then(() => res.json("Country modified!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
+
 }
 
 module.exports = new Countries();

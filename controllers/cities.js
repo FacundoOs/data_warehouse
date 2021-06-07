@@ -38,6 +38,14 @@ class Cities {
       .then(() => res.json("City deleted."))
       .catch((err) => res.status(400).json("Error: " + err));
   }
+
+  async updateCity(req, res) {
+    city
+      .updateOne(req.params, req.body)
+      .then(() => res.json("City modified!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
+
 }
 
 module.exports = new Cities();

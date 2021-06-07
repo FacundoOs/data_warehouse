@@ -31,6 +31,13 @@ class Regions {
       })
       .catch((err) => res.status(400).json("Error: " + err));
   }
+
+  async updateRegion(req, res) {
+    region
+      .updateOne(req.params, req.body)
+      .then(() => res.json("Region modified!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }
 }
 
 module.exports = new Regions();
