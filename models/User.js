@@ -16,7 +16,7 @@ const userSchema = new Schema({
   },
   rol: {
     type: String,
-    enum: ["Admin", "Client"],
+    enum: ["Admin", "User"],
     required: true,
   },
   password: {

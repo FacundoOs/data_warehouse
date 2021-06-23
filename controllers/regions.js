@@ -3,10 +3,10 @@ const { region, country, city } = require("../models/Regions");
 class Regions {
   async newRegion(req, res) {
     const newRegion = new region(req.body);
-
-    newRegion
+    console.log(req.body);
+    await newRegion
       .save()
-      .then(() => res.json("Region added!"))
+      .then(() => res.status(200).json("Region added!"))
       .catch((err) => res.status(400).json("Error: " + err));
   }
 
@@ -16,15 +16,13 @@ class Regions {
       .findOne(req.params)
       .then(async ({ countries }) => {
         countries.forEach(async (idCountry) => {
-          country
-            .findById(idCountry)
-            .then(async ({ cities }) => {
-              cities.forEach(async (idCity) => {
-                await city.findByIdAndDelete(idCity);
-              });
-              await country.findByIdAndDelete(idCountry);
-            })
-            .catch((err) => res.status(400).json("Error: " + err));
+          country.findById(idCountry).then(async ({ cities }) => {
+            cities.forEach(async (idCity) => {
+              await city.findByIdAndDelete(idCity);
+            });
+            await country.findByIdAndDelete(idCountry);
+          });
+          // .catch((err) => res.status(400).json("Error: " + err));
         });
         await region.findByIdAndDelete(req.params);
         res.json("Region deleted!");

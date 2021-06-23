@@ -18,7 +18,7 @@ const firstAdmin = async (res) => {
     try {
       const savedAdmin = await firstAdmin.save();
       console.log(savedAdmin);
-      res.json({ message: "User created" });
+      // res.json({ message: "User created" });
       return
     } catch (e) {
       console.log(e);

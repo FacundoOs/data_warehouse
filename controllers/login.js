@@ -9,16 +9,21 @@ const login = async (req, res, next) => {
 
   try {
     const match = await bcrypt.compare(password, user.password);
-    const accessToken = jwt.sign({ email: email }, process.env.TOKEN_SECRET, { expiresIn: "1d" });
-    console.log(accessToken)
+    console.log(match);
     if (match) {
+      const accessToken = jwt.sign({ email: email }, process.env.TOKEN_SECRET, { expiresIn: "1d" });
+      console.log(accessToken);
       res.json({
+        status: 200,
         message: "User authenticated",
         jwt: accessToken,
+        user,
       });
+    } else {
+      res.status(401).json({ message: "Incorrect password" });
     }
   } catch {
-    res.status(500).json({ message: "User does not exit or password incorrect" });
+    res.status(404).json({ message: "User does not exit or password incorrect" });
   }
 };
 

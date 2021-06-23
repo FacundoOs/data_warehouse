@@ -1,0 +1,140 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+
+body .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #210d6b;
+  height: 10vh;
+  border-bottom: solid 6px #210d6b;
+  padding-top: 0;
+  opacity: 0.7;
+}
+
+body .navbar h1 {
+  color: white;
+  letter-spacing: 3px;
+  font-size: 50px;
+}
+
+body .navbar .typed-cursor {
+  margin-top: -15px;
+  font-size: 50px;
+  color: white;
+  opacity: 1;
+  -webkit-animation: blink 1.3s infinite;
+          animation: blink 1.3s infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3vh;
+  border: solid 5px #210d6b;
+  border-radius: 10px;
+  width: 30vw;
+  height: auto;
+  margin-top: 60px;
+}
+
+body .container .errorsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .container .errorsContainer small {
+  color: red;
+  background-color: black;
+  font-weight: 700;
+  text-align: center;
+}
+
+body .container h1 {
+  font-weight: 500;
+  color: #ffff;
+}
+
+body .container i {
+  font-size: 60px;
+}
+
+body .container .loginForm {
+  width: 80%;
+  margin-top: 10px;
+}
+
+body .container .loginForm label {
+  font-weight: 500;
+  color: #ffff;
+}
+
+body .container .loginForm input {
+  border: solid 2px #247BA0;
+}
+
+body .container .loginForm .text-muted {
+  display: none;
+}
+
+body .container .loginForm .btn {
+  color: #ffff;
+  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  border-style: solid;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/*# sourceMappingURL=login.css.map */

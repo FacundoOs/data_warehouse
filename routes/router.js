@@ -4,6 +4,7 @@ const router = express.Router();
 const login = require("../controllers/login");
 const register = require("../controllers/register");
 const auth = require("../middlewares/auth");
+const authUser = require("../middlewares/authUser");
 const admin = require("../controllers/adminUsers");
 const regions = require("../controllers/regions")
 const countries = require("../controllers/countries")
@@ -11,10 +12,13 @@ const cities = require("../controllers/cities")
 const companies = require("../controllers/companies")
 const contacts = require("../controllers/contacts")
 
-router.post("/login", login);
+
+
+router.post("/login", login, auth);
+router.get("/auth", authUser);
 router.post("/register", auth, register);
 
-router.get("/users", auth, admin.getUsers);
+router.get("/users/:_id", auth, admin.getUsers);
 router.delete("/users/:_id", auth, admin.deleteUsers);
 router.put("/users/:_id", auth, admin.updateUser);
 
@@ -33,7 +37,7 @@ router.delete("/cities/:_id", cities.deleteCity)
 router.put("/cities/:_id", cities.updateCity)
 router.get("/cities", cities.allCities)
 
-router.post("/companies", companies.newCompany)
+router.post("/companies/:city", companies.newCompany)
 router.delete("/companies/:_id", companies.deleteCompany)
 router.put("/companies/:_id", companies.updateCompany)
 router.get("/companies", companies.allCompanies)

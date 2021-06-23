@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const helmet = require("helmet")
 const firstAdmin = require("./controllers/create_first_admin");
 require("dotenv").config();
 
@@ -11,6 +12,8 @@ const routes = require('./routes/router.js'); // import the routes
 
 //Middlewares
 app.use(cors());
+
+app.use(helmet())
 
 app.use(
   bodyParser.urlencoded({

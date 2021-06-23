@@ -3,8 +3,9 @@ const { city } = require("../models/Regions");
 
 class Companies {
   async newCompany(req, res) {
+    console.log(req.params.city)
     city
-      .findOne({ name: req.body.city })
+      .findOne({ name: req.params.city })
       .then(async ({ _id }) => {
         const newCompany = await new Company({
           name: req.body.name,
