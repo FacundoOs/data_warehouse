@@ -21,9 +21,10 @@ const register = async (req, res) => {
     try {
       const savedUSer = await newUser.save();
       console.log(savedUSer);
-      res.json({ message: "User created" });
+      res.status(201).json({ message: "User created" });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
+      res.status(400).json({ message: "Fill all the fields" });
     }
   } else {
     res.status(500).json({ message: "Email already taken" });

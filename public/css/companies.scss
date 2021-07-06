@@ -1,0 +1,344 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@mixin button($color, $bckColor) {
+  color: $color;
+  background-color: $bckColor;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $color;
+    background-color: $lightBlue;
+  }
+}
+
+body {
+  main {
+    .companies {
+      background-image: $gradient;
+      height: 90vh;
+
+      .fa-arrow-down {
+        font-size: 40px;
+        color: $lightBlue;
+        transform: translate(10px, -40px);
+        animation: pulse-arrow 2s infinite;
+        &:hover {
+          color: $black;
+        }
+        @keyframes pulse-arrow {
+          0% {
+            transform: translate(10px, -40px) scale(0.75);
+          }
+
+          70% {
+            transform: translate(10px, -40px) scale(1.15);
+          }
+
+          100% {
+            transform: translate(10px, -40px) scale(0.75);
+          }
+        }
+      }
+
+      .companies-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 85vh;
+        padding-top: 3vh;
+
+        .table-title {
+          margin-bottom: 25px;
+          color: $black;
+        }
+        .fa-rainbow {
+          color: $black;
+          font-size: 40px;
+        }
+        .table-fields {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          grid-auto-rows: 40px;
+          width: 90vw;
+          background-color: $lightBlue;
+          color: white;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border: solid 4px $black;
+          border-bottom: solid 1px $black;
+
+          .field {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 400;
+          }
+        }
+        .companies-table {
+          padding: 3px 3px 10px 3px;
+          border: solid 4px $black;
+          border-top: solid 1px $black;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          background-color: white;
+          width: 90vw;
+          max-height: 60vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+          scroll-padding: 50px 0 0 50px;
+
+          &::-webkit-scrollbar {
+            width: 7px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: $lightBlue;
+            border-radius: 3px;
+          }
+
+          .company-row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 40px;
+            width: 90vw;
+            background-color: white;
+            border-bottom: 1px solid rgb(196, 192, 192);
+            border-radius: unset;
+            margin-left: -5px;
+
+            &:hover {
+              background-color: $blue;
+              cursor: pointer;
+            }
+
+            .company-info {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .company-edit {
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+
+              i {
+                font-size: 24px;
+                color: $black;
+                &:hover {
+                  color: white;
+                  transform: scale(1.1);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      #deleteModal {
+        .modal-header {
+          background-color: $blue;
+          color: $black;
+        }
+        .modal-footer {
+          .btn-secondary {
+            @include button($black, $blue);
+            border: solid 1px $black;
+            text-transform: none;
+            &:hover {
+              color: white;
+              background-color: $black;
+            }
+          }
+          .btn-primary {
+            @include button($black, rgb(255, 111, 0));
+            color: white;
+            border: solid 1px $black;
+            text-transform: none;
+            &:hover {
+              color: white;
+              background-color: red;
+            }
+          }
+        }
+      }
+      #updateModal {
+        @extend #deleteModal;
+
+        .modal-body {
+          input,
+          select {
+            border: solid 1.5px $lightBlue;
+            color: $black;
+          }
+          //Clase del dropdown para el select buscador
+          .dropdown-toggle {
+            border: solid 1.5px $lightBlue;
+            color: $black;
+          }
+          .dropdown-menu {
+            border: solid 4px $blue;
+          }
+          .inner {
+            border: none;
+          }
+        }
+        .modal-footer {
+          background-color: $blue;
+
+          .update-alert {
+            display: none;
+            color: red;
+          }
+
+          .btn-primary {
+            background-color: $black;
+            color: white;
+          }
+        }
+      }
+    }
+    .create-company {
+      background-color: $lightBlue;
+      height: 100vh;
+      border-top: solid 5px $black;
+
+      .fa-arrow-up:nth-child(1) {
+        font-size: 40px;
+        color: white;
+        transform: translate(10px, 30px);
+        animation: pulse-arrow-up 2s infinite;
+        &:hover {
+          color: $black;
+        }
+        @keyframes pulse-arrow-up {
+          0% {
+            transform: translate(10px, 30px) scale(0.75);
+          }
+
+          70% {
+            transform: translate(10px, 30px) scale(1.15);
+          }
+
+          100% {
+            transform: translate(10px, 30px) scale(0.75);
+          }
+        }
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3vh;
+        border: solid 5px $black;
+        border-radius: 10px;
+        background-color: white;
+        width: 35vw;
+        height: auto;
+        margin-top: 25px;
+        margin-bottom: 15px;
+
+        a {
+          font-weight: 500;
+          margin-top: 20px;
+          color: $black;
+        }
+
+        .errorsContainer {
+          display: flex;
+          justify-content: center;
+
+          small {
+            color: red;
+            font-weight: 700;
+          }
+        }
+        h1 {
+          font-weight: 500;
+        }
+        .fa-rainbow {
+          font-size: 40px;
+        }
+        .loginForm {
+          display: flex;
+          flex-direction: column;
+          width: 95%;
+
+          label {
+            font-weight: 500;
+            color: $black;
+          }
+          input {
+            border: solid 2px $lightBlue;
+            color: $black;
+          }
+
+          //Clase del dropdown para el select buscador
+          .dropdown-toggle {
+            border: solid 2px $lightBlue;
+          }
+          .dropdown-menu {
+            border: solid 4px $blue;
+          }
+          .inner {
+            border: none;
+          }
+
+          #btnSubmit {
+            @include button(white, $black);
+            width: 30vw;
+            height: 3.5vw;
+            margin-top: 10px;
+          }
+        }
+      }
+      .alert {
+        padding: 20px;
+        background-color: $blue;
+        color: $white;
+        width: 22vw;
+        margin-top: 10vh;
+        margin-left: 2vw;
+        display: block;
+        position: absolute;
+
+        .closebtn {
+          margin-left: 15px;
+          color: $black;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .fa-arrow-up {
+          font-size: 18px;
+          transform: none;
+          color: $black;
+        }
+      }
+      .center-alert {
+        display: flex;
+        justify-content: center;
+
+        .alertCreation {
+          @extend .alert;
+          font-size: 24px;
+          background-color: green;
+          width: 22vw;
+          height: 35vh;
+          display: none; //Cambiado desde JS a display: block;
+          position: absolute;
+          top: 10vh;
+          right: 2vw;
+          z-index: 1;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

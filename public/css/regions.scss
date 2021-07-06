@@ -1,0 +1,251 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@mixin button($color, $bckColor) {
+  color: $color;
+  background-color: $bckColor;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $color;
+    background-color: $lightBlue;
+  }
+}
+
+body {
+  main {
+    background-image: $gradient;
+    min-height: 90vh;
+
+    .tree-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 0 auto;
+      padding-top: 2vh;
+      height: auto;
+
+      .info-tree {
+        display: flex;
+        align-items: center;
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          justify-items: space-around;
+          margin-left: 2.5vw;
+          width: 30%;
+
+          input {
+            border: solid 2px $lightBlue;
+            border-radius: 5px;
+            margin-bottom: 15px;
+          }
+          .btn-primary {
+            @include button(white, $black);
+          }
+        }
+        .info {
+          margin-left: 2.5vw;
+          margin-right: 2.5vw;
+
+          p {
+            font-weight: 400;
+            color: white;
+            background-color: $lightBlue;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .big-container {
+        display: flex;
+        margin-left: 2.5vw;
+        align-items: flex-start;
+        width: 95%;
+        background-color: $black;
+        border-radius: 5px;
+        padding: 10px;
+        min-height: 68vh;
+        max-height: 68vh;
+        overflow-y: auto;
+        overflow-x: auto;
+        scroll-padding: 50px 0 0 50px;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        &::-webkit-scrollbar:horizontal {
+          height: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 3px;
+          background-color: $lightBlue;
+        }
+        &::-webkit-scrollbar-corner {
+          background-color: $black;
+          border-radius: 5px;
+        }
+
+        .hidden {
+          display: none;
+        }
+        .fall {
+          transform: translateY(8rem) rotateZ(20deg);
+          opacity: 0;
+        }
+        .ul-region {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 22vw;
+          border-radius: 5px;
+          transition: all 1.2s ease;
+
+          .region-div {
+            display: flex;
+            align-items: center;
+            height: fit-content;
+            width: fit-content;
+
+            i {
+              color: white;
+              margin: 8px;
+              cursor: pointer;
+              &:hover {
+                transform: scale(1.4);
+              }
+            }
+          }
+
+          p {
+            background-color: $blue;
+            cursor: pointer;
+            margin: 10px;
+            padding: 0.5px 10px;
+            border-radius: 5px;
+            width: fit-content;
+            max-width: 175px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:hover {
+              white-space: unset;
+            }
+          }
+
+          .ul-country {
+            color: $black;
+            text-align: center;
+            border-radius: 5px;
+            transition: all 0.7s ease;
+
+            .country-div {
+              @extend .region-div;
+            }
+
+            p {
+              background-color: $lightBlue;
+              color: white;
+              padding: 0.5px 10px;
+              margin-left: 40px;
+              border-radius: 5px;
+              width: fit-content;
+              cursor: pointer;
+            }
+
+            .li-city {
+              background-color: white;
+              color: $black;
+              list-style: none;
+              padding: 0.5px 10px;
+              margin: 10px 0px 5px 70px;
+              width: fit-content;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: all 0.7s ease;
+              max-width: 15vw;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow-x: hidden;
+
+              &:hover {
+                white-space: unset;
+                text-overflow: unset;
+                overflow-x: hidden;
+              }
+
+              i {
+                margin-left: 15px;
+                &:hover {
+                  transform: scale(1.4);
+                }
+                &:nth-child(2) {
+                  color: $lightBlue;
+                }
+                &:nth-child(3) {
+                  color: $lightBlue;
+                }
+              }
+            }
+          }
+        }
+      }
+      .tree-alert {
+        position: absolute;
+        top: 12vh;
+        left: 0vw;
+        height: auto;
+        padding: 20px;
+        background-color: rgb(163, 8, 8);
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    #deleteModal,
+    #updateModal,
+    #createModal {
+      .modal-header {
+        background-color: $blue;
+        color: $black;
+      }
+      .modal-body {
+        input {
+          outline: none;
+          border: solid 2px $lightBlue;
+          border-radius: 5px;
+          padding: 5px;
+          width: 60%;
+        }
+      }
+      .modal-footer {
+        background-color: $blue;
+        .btn-primary {
+          @include button($black, rgb(255, 111, 0));
+          color: white;
+          border: solid 1px $black;
+          text-transform: none;
+          &:hover {
+            color: white;
+            background-color: red;
+          }
+        }
+        .btn-secondary {
+          @include button($black, $blue);
+          border: solid 1px $black;
+          text-transform: none;
+          &:hover {
+            color: white;
+            background-color: $black;
+          }
+        }
+      }
+    }
+  }
+}

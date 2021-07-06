@@ -6,7 +6,7 @@ class Cities {
     // console.log(req.params)
     // console.log(checkRegion)
     if (checkCountry == null) {
-      res.status(400).json("No existe pais con ese id");
+      res.status(400).json("There is no country with that id");
       return;
     }
 
@@ -14,7 +14,7 @@ class Cities {
     // console.log(req.body)
     // console.log(existCountry)
     if (existCity != "") {
-      res.status(400).json("Ya existe la ciudad que quiere crear");
+      res.status(400).json("The city you want to create already exists");
       return;
     }
 

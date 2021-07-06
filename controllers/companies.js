@@ -3,7 +3,7 @@ const { city } = require("../models/Regions");
 
 class Companies {
   async newCompany(req, res) {
-    console.log(req.params.city)
+    console.log(req.params.city);
     city
       .findOne({ name: req.params.city })
       .then(async ({ _id }) => {
@@ -32,6 +32,7 @@ class Companies {
   }
 
   async updateCompany(req, res) {
+    // console.log(req.body.city)
     Company.findByIdAndUpdate(req.params, {
       name: req.body.name,
       address: req.body.address,
@@ -43,6 +44,9 @@ class Companies {
         select: "name",
       })
       .then((company) => {
+        console.log(req.body.city);
+        console.log(company.city[0].name);
+
         if (req.body.city != company.city[0].name) {
           city
             .findOne({ name: req.body.city })
@@ -60,8 +64,7 @@ class Companies {
   }
 
   async allCompanies(req, res) {
-    Company
-      .find({}, { __v: 0})
+    Company.find({}, { __v: 0 })
       .populate({
         path: "city",
         select: "name",

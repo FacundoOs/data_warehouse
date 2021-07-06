@@ -31,6 +31,8 @@ class Regions {
   }
 
   async updateRegion(req, res) {
+    console.log(req.params)
+    console.log(req.body)
     region
       .updateOne(req.params, req.body)
       .then(() => res.json("Region modified!"))
@@ -38,7 +40,7 @@ class Regions {
   }
 
   async allRegions(req, res) {
-    region
+    await region
       .find({}, { __v: 0 })
       .populate({
         path: "countries",

@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 
-const authUser = (req, res, next) => {
+const authUser =  async(req, res, next) => {
   console.log(req.headers.authorization);
   try {
     token = req.headers.authorization.split(" ")[1];
-    jwt.verify(token, process.env.TOKEN_SECRET, async (err, authData) => {
+    await jwt.verify(token, process.env.TOKEN_SECRET, async (err, authData) => {
       console.log(authData);
       if (err) {
         res.status(401).json({ message: "You are not logged in" });
@@ -13,7 +13,7 @@ const authUser = (req, res, next) => {
       }
     });
   } catch (err) {
-    console.log("error");
+    res.status(404).json({ message: "Not authorized" });
   }
 };
 module.exports = authUser;
