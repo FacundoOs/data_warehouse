@@ -61,7 +61,7 @@ const contactSchema = new Schema({
       },
       preferences: {
         type: String,
-        enum: ["Canal favorito", "No molestar", "Sin preferencia"],
+        enum: ["Favorite channel", "Not disturb", "No preference"],
       },
     },
   ],

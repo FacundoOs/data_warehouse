@@ -41,7 +41,9 @@ class Contacts {
         res.json(thisContact);
       })
 
-      .catch((err) => res.status(400).json("Error: " + err));
+      .catch((err) =>
+        res.status(err.status || 500).json({ status: err.status, message: err.message })
+      );
   }
 
   async deleteContact(req, res) {
@@ -51,7 +53,7 @@ class Contacts {
         const deletedContacts = await contact.findByIdAndDelete({ _id: contactId });
         console.log(deletedContacts);
       });
-      res.json("Contact/s deleted");
+      res.status(200).json("Contact/s deleted");
     } catch (e) {
       console.log(e);
     }
@@ -122,7 +124,9 @@ class Contacts {
         select: "name",
       })
       .then((thisContact) => res.json(thisContact))
-      .catch((err) => res.status(400).json("Error: " + err));
+      .catch((err) =>
+        res.status(err.status || 500).json({ status: err.status, message: err.message })
+      );
   }
 
   async sortContacts(req, res) {
@@ -134,14 +138,13 @@ class Contacts {
     //recieve field to sort
     const field = req.params.field;
     const order = req.params.order;
-
     contact
       .find({}, { __v: 0 })
       .populate({
         path: "company region country city",
         select: "name",
       })
-      .sort({ field: order })
+      .sort({ [field]: [order] })
       .then((contactsList) => res.json(contactsList))
       .catch((err) => res.status(400).json("Error: " + err));
   }

@@ -4,11 +4,12 @@ const users = document.getElementById("users");
 const ul = document.getElementById("ul");
 const burger = document.getElementById("burger");
 const menu = document.getElementById("rigth-nav");
-import { basepathClient, basepathServer } from './global.js';
+import { basepathClient, basepathServer } from "./global.js";
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", fetchAuth);
 burger.addEventListener("click", toggleMenu);
+logOut.addEventListener("click", closeSession);
 
 async function fetchAuth() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -30,11 +31,11 @@ async function fetchAuth() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "authorization": `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
     });
     let fetchJson = await fetchLogin.json();
-    console.log(fetchJson)
+    console.log(fetchJson);
     let email = fetchJson.email;
 
     //Welcome message
@@ -45,3 +46,25 @@ async function fetchAuth() {
     // }
   }
 }
+
+function toggleMenu() {
+  if (burger.className == "fas fa-bars") {
+    burger.className = "fas fa-times";
+    menu.style.display = "flex";
+  } else {
+    burger.className = "fas fa-bars";
+    menu.style.display = "none";
+  }
+}
+
+function closeSession() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("profile");
+  fetchAuth();
+}
+// logOut.addEventListener('click',()=>{
+//   console.log("22222")
+//   localStorage.removeItem('token');
+//   localStorage.removeItem('profile');
+//   fetchAuth();
+// })

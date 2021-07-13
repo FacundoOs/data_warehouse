@@ -1,11 +1,11 @@
 body .first {
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
   height: 90vh;
 }
 
 body .first .fa-arrow-down {
   font-size: 40px;
-  color: #247BA0;
+  color: #247ba0;
   -webkit-transform: translate(10px, -40px);
           transform: translate(10px, -40px);
   -webkit-animation: pulse-arrow 2s infinite;
@@ -78,7 +78,7 @@ body .first .users-container .table-fields {
       grid-template-columns: 0.8fr 0.8fr 1.6fr 0.6fr 1fr;
   grid-auto-rows: 40px;
   width: 75vw;
-  background-color: #247BA0;
+  background-color: #247ba0;
   color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -117,7 +117,7 @@ body .first .users-container .users-table::-webkit-scrollbar {
 }
 
 body .first .users-container .users-table::-webkit-scrollbar-thumb {
-  background-color: #247BA0;
+  background-color: #247ba0;
   border-radius: 3px;
 }
 
@@ -191,7 +191,7 @@ body .first #deleteModal .modal-footer .btn-secondary, body .first #updateModal 
 
 body .first #deleteModal .modal-footer .btn-secondary:hover, body .first #updateModal .modal-footer .btn-secondary:hover {
   color: #111010;
-  background-color: #247BA0;
+  background-color: #247ba0;
 }
 
 body .first #deleteModal .modal-footer .btn-secondary:hover, body .first #updateModal .modal-footer .btn-secondary:hover {
@@ -212,7 +212,7 @@ body .first #deleteModal .modal-footer .btn-primary, body .first #updateModal .m
 
 body .first #deleteModal .modal-footer .btn-primary:hover, body .first #updateModal .modal-footer .btn-primary:hover {
   color: #111010;
-  background-color: #247BA0;
+  background-color: #247ba0;
 }
 
 body .first #deleteModal .modal-footer .btn-primary:hover, body .first #updateModal .modal-footer .btn-primary:hover {
@@ -222,7 +222,7 @@ body .first #deleteModal .modal-footer .btn-primary:hover, body .first #updateMo
 
 body .first #updateModal .modal-body input,
 body .first #updateModal .modal-body select {
-  border: solid 1.5px #247BA0;
+  border: solid 1.5px #247ba0;
   color: #111010;
 }
 
@@ -236,7 +236,7 @@ body .first #updateModal .modal-footer .btn-primary {
 }
 
 body .second {
-  background-color: #247BA0;
+  background-color: #247ba0;
   border-top: solid 6px #111010;
   height: 100vh;
 }
@@ -307,12 +307,12 @@ body .second .container .loginForm label {
 }
 
 body .second .container .loginForm input {
-  border: solid 2px #247BA0;
+  border: solid 2px #247ba0;
   color: #111010;
 }
 
 body .second .container .loginForm select {
-  border: solid 2px #247BA0;
+  border: solid 2px #247ba0;
   color: #111010;
 }
 
@@ -351,7 +351,7 @@ body .second .container .loginForm .btn {
 
 body .second .container .loginForm .btn:hover {
   color: white;
-  background-color: #247BA0;
+  background-color: #247ba0;
 }
 
 body .second .alert, body .second .center-alert .alertCreation {
